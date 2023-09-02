@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gataria-frontend
+  labels:
+    app: gataria-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gataria-frontend
+  template:
+    metadata:
+      labels:
+        app: gataria-frontend
+    spec:
+      containers:
+      - name: gataria-frontend
+        image: evermariano/gataria-frontend:dev2
+        ports:
+        - containerPort: 3000

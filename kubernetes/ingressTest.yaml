@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gataria-frontend
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: dev.gataria.example
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: gataria-frontend
+                port:
+                  number: 80
+            path: /

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gataria-backend-images
+  labels:
+    app: gataria-backend-images
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gataria-backend-images
+  template:
+    metadata:
+      labels:
+        app: gataria-backend-images
+    spec:
+      containers:
+      - name: gataria-backend-images
+        image: evermariano/gataria-backend-images:dev
+        ports:
+        - containerPort: 3020
+        env:
+        - name: CATAPI_URL
+          valueFrom:
+            configMapKeyRef:
+              name: gataria-envs
+              key: CATAPI_URL

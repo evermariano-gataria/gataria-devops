@@ -1,0 +1,10 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: gataria-runners-gh-actions
+  namespace: github-actions
+spec:
+  replicas: 2
+  template:
+    spec:
+      organization: evermariano-gataria

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gataria-envs
+  namespace: dev
+data:
+  # property-like keys; each key maps to a simple value
+  MONGO_DATABASE: "dev"
+  CATAPI_URL: "https://api.thecatapi.com/v1/images/search"
+  
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gataria-envs
+  namespace: prod
+data:
+  # property-like keys; each key maps to a simple value
+  MONGO_DATABASE: "prod"
+  CATAPI_URL: "https://api.thecatapi.com/v1/images/search"

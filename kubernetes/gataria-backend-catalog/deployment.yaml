@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gataria-backend-catalog
+  labels:
+    app: gataria-backend-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gataria-backend-catalog
+  template:
+    metadata:
+      labels:
+        app: gataria-backend-catalog
+    spec:
+      containers:
+      - name: gataria-backend-catalog
+        image: evermariano/gataria-backend-catalog:dev2
+        ports:
+        - containerPort: 3010
+        env:
+        - name: MONGO_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: gataria-envs
+              key: MONGO_DATABASE
+        - name: MONGO_URL
+          valueFrom:
+            secretKeyRef:
+              name: gataria-secrets
+              key: MONGO_URL
